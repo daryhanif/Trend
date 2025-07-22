@@ -1,0 +1,354 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "86c947e0-1d8d-4c35-9dd6-77b5ae6020c3",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "detail_user": {
+      "name": "detail_user",
+      "columns": {
+        "id_detail": {
+          "name": "id_detail",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_user": {
+          "name": "id_user",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "bio": {
+          "name": "bio",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "website": {
+          "name": "website",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "detail_user_id_user_users_id_user_fk": {
+          "name": "detail_user_id_user_users_id_user_fk",
+          "tableFrom": "detail_user",
+          "tableTo": "users",
+          "columnsFrom": [
+            "id_user"
+          ],
+          "columnsTo": [
+            "id_user"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "detail_user_id_detail": {
+          "name": "detail_user_id_detail",
+          "columns": [
+            "id_detail"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "email_verify": {
+      "name": "email_verify",
+      "columns": {
+        "id_verify": {
+          "name": "id_verify",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "code_verify": {
+          "name": "code_verify",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "is_valid": {
+          "name": "is_valid",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "email_verify_id_verify": {
+          "name": "email_verify_id_verify",
+          "columns": [
+            "id_verify"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "login": {
+      "name": "login",
+      "columns": {
+        "id_login": {
+          "name": "id_login",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_user": {
+          "name": "id_user",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "refresh_token": {
+          "name": "refresh_token",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_device": {
+          "name": "id_device",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_device": {
+          "name": "type_device",
+          "type": "enum('IOS','ANDROID','WEB')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "login_id_user_users_id_user_fk": {
+          "name": "login_id_user_users_id_user_fk",
+          "tableFrom": "login",
+          "tableTo": "users",
+          "columnsFrom": [
+            "id_user"
+          ],
+          "columnsTo": [
+            "id_user"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "login_id_login": {
+          "name": "login_id_login",
+          "columns": [
+            "id_login"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "reset_password": {
+      "name": "reset_password",
+      "columns": {
+        "id_verify": {
+          "name": "id_verify",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "code_verify": {
+          "name": "code_verify",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "is_valid": {
+          "name": "is_valid",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "reset_password_id_verify": {
+          "name": "reset_password_id_verify",
+          "columns": [
+            "id_verify"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id_user": {
+          "name": "id_user",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "displayname": {
+          "name": "displayname",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "img_profile": {
+          "name": "img_profile",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_provider": {
+          "name": "id_provider",
+          "type": "varchar(225)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "users_id_user": {
+          "name": "users_id_user",
+          "columns": [
+            "id_user"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    }
+  },
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}

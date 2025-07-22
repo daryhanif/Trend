@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import dotenv from "dotenv";
 import cors from "cors";
+
 dotenv.config({
   path:
     process.env.NODE_ENV === "production"
@@ -18,15 +19,20 @@ app.use(
       "Content-Type",
       "Authorization",
       "X-Requested-With",
-      "X-CSRF-Token",
       "X-CLIENT",
     ],
   })
 );
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const StartServer = async () => {
+  app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+  });
+
+  app.get("/", (req, res) => {
+    res.send("Hello World!");
+  });
+  app.use("/api", require("./routes"));
+};
+
+StartServer();
