@@ -12,6 +12,7 @@ import { eq, or } from "drizzle-orm";
 import ErrorHandler from "@/app/.config/erorHandler.config";
 import { JwtHelpers } from "@/helpers/Jwt.helpers";
 import { Login, User } from "@/models/mysql/Auth.model.mysql";
+import redis from "@/app/redis/redis.config";
 class AuthServices {
   static LoginManual = async (
     req: LoginManualRequest
@@ -101,7 +102,9 @@ class AuthServices {
     if (findUser) {
       throw new ErrorHandler(400, "Email already exist");
     }
-    const;
+    const findUserRedis = await redis.get(
+      ("email:" + filteredRequest.email) as string
+    );
     return {
       cooldown: 0,
     };

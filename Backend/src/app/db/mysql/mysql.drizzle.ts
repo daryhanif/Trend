@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export const getInfesial = async () => {
   const secret = await InfisicalLbirary.getInfisical(
-    "SSL_MYSQL_DARYHANIF_PROJECT"
+    process.env.SEACRET_VAR ?? ""
   );
   return secret.secretValue;
 };

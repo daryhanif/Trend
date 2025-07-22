@@ -28,7 +28,7 @@ class AuthController {
     next: NextFunction
   ) => {
     try {
-      const RegistersEmail = await AuthServices.registersEmailService(req.body);
+      const RegistersEmail = await AuthServices.RegisterEmail(req.body);
       res.status(200).json(RegistersEmail);
     } catch (err) {
       next(err);

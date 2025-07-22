@@ -2,6 +2,9 @@ import express from "express";
 import "dotenv/config";
 import dotenv from "dotenv";
 import cors from "cors";
+import redis from "./app/redis/redis.config";
+import routerAuth from "@/routes/Auth.route";
+import { JwtHelpers } from "@/helpers/Jwt.helpers";
 
 dotenv.config({
   path:
@@ -25,14 +28,25 @@ app.use(
 );
 
 const StartServer = async () => {
+  await redis.connect();
+  const tokenAccsess = await JwtHelpers.createToken(
+    {
+      id: "asem",
+    },
+    {
+      typeToken: "access",
+      algo: "RS256",
+      exp: "1d",
+    }
+  );
   app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+    console.log("Server is running on port 3000" + tokenAccsess);
   });
 
   app.get("/", (req, res) => {
     res.send("Hello World!");
   });
-  app.use("/api", require("./routes"));
+  app.use("/api/auth", routerAuth);
 };
 
 StartServer();

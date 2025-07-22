@@ -25,7 +25,7 @@
   "main": " src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run:dev": "nodemon src/index.ts",
+    "run:dev": "dotenv -e .env.development -- nodemon --require tsconfig-paths/register --exec ts-node src/index.ts",
     "build": "tsc -b"
   },
   "dependencies": {
@@ -33,12 +33,11 @@
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.0.0",
+    "dotenv": "^17.2.0",
     "drizzle-kit": "^0.31.4",
     "drizzle-orm": "^0.44.2",
     "express": "^5.1.0",
-    "ioredis": "^5.6.1",
-    "jose": "^6.0.11",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.1",
     "mysql2": "^3.14.1",
     "redis": "^5.6.0",
@@ -51,9 +50,12 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/ioredis": "^4.28.10",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^24.0.7",
+    "dotenv-cli": "^8.0.0",
     "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
   }
 }
