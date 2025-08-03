@@ -23,6 +23,27 @@ export class JwtHelpers {
     privateKey: "",
   };
 
+  static async verifyToken(
+    token: string,
+    typeToken: Pick<Security, "typeToken">
+  ): Promise<JwtPayload> {
+    const isAccess = typeToken.typeToken === "access";
+
+    JwtHelpers.Token_Key.publicKey = process.env[
+      isAccess ? "PUBLIC_KEY_JWT_ACCESS" : "PUBLIC_KEY_JWT_REFRESH"
+    ] as string;
+
+    JwtHelpers.Token_Key.privateKey = process.env[
+      isAccess ? "PRIVATE_KEY_JWT_ACCESS" : "PRIVATE_KEY_JWT_REFRESH"
+    ] as string;
+    JwtHelpers.Token_Key.publicKey = process.env
+      .PUBLIC_KEY_JWT_ACCESS as string;
+    return jsonwebtoken.verify(
+      token,
+      JwtHelpers.Token_Key.publicKey
+    ) as JwtPayload;
+  }
+
   static async createToken(
     payload: Payload,
     security: Security

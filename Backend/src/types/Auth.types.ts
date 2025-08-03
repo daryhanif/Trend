@@ -23,13 +23,32 @@ export interface RegisterEmailRequest {
   email: string;
 }
 export interface RegisterEmailResponse {
+  id_verify: string;
   cooldown: number | Date | string;
+  email: string;
 }
 export interface ValidateEmailRequest {
+  id_verify: string;
   email: string;
   code: string;
 }
-
+export interface RedisValidate extends ValidateEmailRequest {
+  cooldown: number | Date | string;
+  expriresAt: number | Date | string;
+}
 export interface ValidateEmailResponse {
   statusValidationEmail: boolean;
+}
+
+export interface RegisterAccountRequest {
+  imgProfile: string;
+  displayName: string;
+  username: string;
+  email: string;
+  password: string;
+  id_provider?: string;
+}
+
+export interface SqlRegisterAccount extends RegisterAccountRequest {
+  id_user: string;
 }

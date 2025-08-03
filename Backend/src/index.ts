@@ -35,8 +35,8 @@ const StartServer = async () => {
     },
     {
       typeToken: "access",
-      algo: "RS256",
-      exp: "1d",
+      algorithm: "RS256",
+      expiresIn: "1d",
     }
   );
   app.listen(3000, () => {

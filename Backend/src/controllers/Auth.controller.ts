@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import AuthServices from "@/services/Auth.services";
+import Busboy from "busboy";
 class AuthController {
   static Login = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -33,6 +34,18 @@ class AuthController {
     } catch (err) {
       next(err);
     }
+  };
+  static UploadProfile = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const busboy = Busboy({ headers: req.headers });
+    let isDone: boolean = false;
+    const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+    let totalSize = 0;
+    let fileRejected = false;
+    busboy.on("file");
   };
 }
 export default AuthController;

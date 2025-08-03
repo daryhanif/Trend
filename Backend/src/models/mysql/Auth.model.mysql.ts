@@ -31,8 +31,8 @@ export const EmailVerify = mysqlTable("email_verify", {
   id_verify: varchar("id_verify", { length: 225 }).primaryKey(),
   email: varchar("email", { length: 225 }).notNull(),
   code_verify: varchar("code_verify", { length: 225 }).notNull(),
-  is_valid: boolean("is_valid").default(false).notNull(),
   created_at: timestamp("created_at").defaultNow().notNull(),
+  cooldown: timestamp("cooldown").notNull(),
   expires_at: timestamp("expires_at").notNull(),
 });
 

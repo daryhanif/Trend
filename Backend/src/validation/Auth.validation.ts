@@ -29,11 +29,12 @@ class AuthValidations {
   });
 
   static VALIDATEEMAIL = z.object({
+    id_verify: z.string().uuid(),
     email: z
       .string()
       .email()
       .transform((val) => xss(val.trim())),
-    code: z.string().transform((val) => xss(val.trim())),
+    code: z.number(),
   });
 
   static REGISTERACCOUNT = z.object({
