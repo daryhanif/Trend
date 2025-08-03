@@ -12,7 +12,7 @@
 
 ### 🖥️ Frontend
 
-- [Next.Js](https://vitejs.dev/)
+- [Next.Js](https://nextjs.org/)
 - TypeScript
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Axios](https://axios-http.com/)
