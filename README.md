@@ -12,7 +12,7 @@
 
 ### 🖥️ Frontend
 
-- [Vite](https://vitejs.dev/) + [React](https://reactjs.org/)
+- [Next.Js](https://vitejs.dev/)
 - TypeScript
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Axios](https://axios-http.com/)
@@ -28,7 +28,6 @@
 - [Mongoose](https://mongoosejs.com/)
 - [Zod](https://zod.dev/) untuk schema validation
 - [JWT](https://jwt.io/) untuk authentication
-- [Day.js](https://day.js.org/) untuk manipulasi tanggal
 
 ---
 
